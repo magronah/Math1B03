@@ -1,5 +1,5 @@
 ---
-title: "Adjoint of Matrices"
+title: "Lecture Notes"
 author: "Michael Agronah"
 date: "2023-05-28"
 output:
@@ -7,12 +7,13 @@ output:
   pdf_document: default
 ---
 
-# Introduction
+# Topic:  Adjoint of Matrices
 
-In linear algebra, the adjoint of a matrix plays an important role in various applications. The adjoint matrix, also known as the adjugate or classical adjoint, is closely related to the concept of the inverse of a matrix. In this lecture, we will explore the definition and properties of the adjoint of a matrix, with a specific focus on 3x3 matrices.
+## Introduction
+The adjoint of a matrix is useful in many applications of linear algebra. The adjoint matrix, also known as the adjugate or classical adjoint, is connected to the concept of a matrix's inverse. In this lecture, we will look at the definition and properties of a matrix's adjoint, with an emphasis on 3x3 matrices.
 
 
-# Definition
+## Definition
 Let $A$ be a square matrix of order $n$. The adjoint of $A$, denoted as $\text{adj}(A)$ or $A^*$, is defined as the transpose of the cofactor matrix of $A$. The cofactor of an element $a_{ij}$ in $A$ is given by $C_{ij} = (-1)^{i+j}\det(M_{ij})$, where $M_{ij}$ is the $(n-1)\times(n-1)$ submatrix obtained by deleting the $i$-th row and $j$-th column of $A$. 
 
 The adjoint matrix can be expressed as $\text{adj}(A) = [C_{ij}]^T$. In other words, the $(i,j)$-th entry of the adjoint matrix is the cofactor of the $(j,i)$-th entry of the original matrix.
@@ -20,7 +21,7 @@ The adjoint matrix can be expressed as $\text{adj}(A) = [C_{ij}]^T$. In other wo
 
 <!-- Let $A$ be a 3x3 matrix with entries $a_{ij}$ for $1 \leq i,j \leq 3$. The adjoint of matrix $A$, denoted by $\text{adj}(A)$, is defined as the transpose of the cofactor matrix of $A$. The cofactor of the entry $a_{ij}$ is denoted by $C_{ij}$ and is defined as $(-1)^{i+j}$ times the determinant of the submatrix obtained by deleting the $i$th row and $j$th column of $A$. -->
 
-# Illustration 2 x 2 matrices
+## Illustration 2 x 2 matrices
 
 Let's find the adjoint of the matrix $A = \begin{bmatrix} 2 & 3 \\ 1 & 4 \end{bmatrix}$.
 
@@ -56,7 +57,7 @@ A^* = \begin{bmatrix} 4 & -3 \\ -1 & 2 \end{bmatrix}
 \]
 
 
-# Illustration  3 x 3 matrices
+## Illustration  3 x 3 matrices
 
 Let's consider a 3x3 matrix $A$:
 
@@ -98,7 +99,7 @@ Finally, we take the transpose of the cofactor matrix to obtain the adjoint of $
 
 
 
-# Example
+## Example
 Let's find the adjoint of the following matrix:
 \[
 A = \begin{bmatrix}
@@ -190,7 +191,7 @@ Finally, we take the transpose of the cofactor matrix to obtain the adjoint of m
 \end{bmatrix}
 \]
 
-# Properties of the Adjoint
+## Properties of the Adjoint
 The adjoint of a matrix has several properties:
 
 1. If $A$ is an invertible matrix, then $\text{adj}(A)$ is also invertible, and $(\text{adj}(A))^{-1} = \frac{1}{\det(A)}A$.
@@ -209,11 +210,64 @@ The adjoint of a matrix has several properties:
 <!-- \end{itemize} -->
 
 
-# Conclusion
+## Conclusion
+A matrix's adjoint contains useful information about the original matrix, such as its invertibility and the relationship between the matrix and its determinant. We focused on the definition and properties of the adjoint of 2x2 and 3x3 matrices in this lesson. However, the adjoint idea can be used to matrices of any order. Further study of this subject will broaden your grasp of linear algebra and its applications.
 
-The adjoint of a matrix provides valuable information about the original matrix, such as its invertibility and the relationship between the matrix and its determinant. In this lecture, we focused on the definition and properties of the adjoint of 2x2 and 3x3 matrices. However, the concept of the adjoint can be extended to matrices of any order. Further exploration of this topic will deepen your understanding of linear algebra and its applications.
 
 <!-- [introduction](main/introduction.htlm) -->
+# Topic:  Vector Spaces and Subspaces
+
+## Introduction
+
+Today's lecture is about vector spaces and subspaces. Vector spaces play a very important foundation for understanding many essential concepts in linear algebra such as linear transformations, eigenvectors.  The essential ideas, properties, and examples of vector spaces and subspaces will be discussed in this lecture.
+
+## Vector Spaces
+A vector space $V$ is a collection of vectors that satisfy specific criteria. 
+
+### Definition: 
+A vector space $V$ over a field $F$ is a set of vectors (note: non-empty set of vectors) with two operations namely
+
+1. Vector Addition: For any two vectors $u$ and $v$ $\in V$, there exists a unique vector $u + v$,  also in $V$.
+2. Scalar Multiplication: For any vector $u \in V$ and any scalar $c in F$, there exists a unique vector $cu$, also in $V$.
 
 
+These 2 operations mentioned above must satisfy the following 10 properties. Lets list the properties. 
+
+For all vectors $u, v$, and $w \in V$ and scalars $c$ and $d \in F$:
+
+1. $u + v \in V$ (Closure under addition)
+2. $cv \in V$ (Closure under scalar multiplication )
+3. $u + v = v + u$ (Commutativity of Addition)
+4. $(u + v) + w = u + (v + w)$ (Associativity of Addition)
+5. There exists a vector $0 \in V$ such that $u + 0 = u$ (Identity Element of Addition)
+6. For any vector $u \in V$, there exists a vector $-u \in V$ such that $u + (-u) = 0$ (Inverse Elements of Addition)
+7. $c(du) = (cd)u$ (Compatibility of Scalar Multiplication with Field Multiplication)
+8. $1u = u$, (1 is the multiplicative identity in $F$)
+9. $c(u + v) = cu + cv$ (Distributivity of Scalar Multiplication with respect to Vector Addition)
+10. $(c + d)u = cu + du$ (Distributivity of Scalar Multiplication with respect to Field Addition)
+ 
+## Example: 
+The n-dimensional space $R^n$ is a vector space.
+
+1.\textbf{1. Closure under addition:} For any $\mathbf{u}, \mathbf{v} \in V$, $\mathbf{u} + \mathbf{v} \in R^n$. This is true because in an n-dimensional space, adding two vectors results in another vector within the same space.
+
+2.\textbf{2. Closure under scalar multiplication:} For any $\mathbf{u} \in V$ and scalar $c$, $c\mathbf{u} \in R^n$. This holds true as multiplying a vector by a scalar does not change the dimensionality of the vector space.
+
+3.\textbf{3. Commutativity of addition:} For any $\mathbf{u}, \mathbf{v} \in V$, $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$. This property follows from the commutative property of addition in the underlying field.
+
+4.\textbf{4. Associativity of addition:} For any $\mathbf{u}, \mathbf{v}, \mathbf{w} \in R^n$, $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$. This property follows from the associativity of addition in the underlying field.
+
+5.\textbf{5. Existence of zero vector:} There exists a vector $\mathbf{0} \in R^n$ such that for any $\mathbf{u} \in V$, $\mathbf{u} + \mathbf{0} = \mathbf{u}$. This vector $\mathbf{0}$ is the additive identity element in the underlying field.
+
+6.\textbf{6. Existence of additive inverse:} For any $\mathbf{u} \in V$, there exists a vector $-\mathbf{u} \in V$ such that $\mathbf{u} + (-\mathbf{u}) = \mathbf{0}$. This property ensures that every vector has an additive inverse.
+
+7.\textbf{7. Distributivity of scalar multiplication over vector addition:} For any scalars $a$ and $b$ and $\mathbf{u} \in V$, $(a + b)\mathbf{u} = a\mathbf{u} + b\mathbf{u}$. This property follows from the distributivity of scalar multiplication over addition in the underlying field.
+
+8.\textbf{8. Distributivity of scalar multiplication over field addition:} For any scalar $a$ and vectors $\mathbf{u}, \mathbf{v} \in V$, $a(\mathbf{u} + \mathbf{v}) = a\mathbf{u} + a\mathbf{v}$. This property follows from the distributivity of scalar multiplication over addition in the underlying field.
+
+9.\textbf{9. Compatibility of scalar multiplication with field multiplication:} For any scalars $a$ and $b$ and $\mathbf{u} \in V$, $(ab)\mathbf{u} = a(b\mathbf{u})$. This property follows from the associativity of multiplication in the underlying field.
+
+10.\textbf{10. }   1$\mathbf{u} = u\in R^n$
+
+Since all the vector space axioms hold for the n-dimensional space $R^n$, it is indeed a vector space.
 

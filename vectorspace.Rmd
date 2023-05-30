@@ -1,0 +1,91 @@
+---
+title: "Vector Spaces and Subspaces"
+author: "Michael Agronah"
+date: "2023-05-30"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+# Introduction
+
+Today's lecture is about vector spaces and subspaces. Vector spaces play a very important foundation for understanding many essential concepts in linear algebra such as linear transformations, eigenvectors.  The essential ideas, properties, and examples of vector spaces and subspaces will be discussed in this lecture.
+
+# Vector Spaces
+A vector space $V$ is a collection of vectors that satisfy specific criteria. 
+
+## Definition: 
+A vector space $V$ over a field $F$ is a set of vectors (note: non-empty set of vectors) with two operations namely
+
+1. Vector Addition: For any two vectors $u$ and $v$ $\in V$, there exists a unique vector $u + v$,  also in $V$.
+2. Scalar Multiplication: For any vector $u \in V$ and any scalar $c in F$, there exists a unique vector $cu$, also in $V$.
+
+
+These 2 operations mentioned above must satisfy the following 10 properties. Lets list the properties. 
+
+For all vectors $u, v$, and $w \in V$ and scalars $c$ and $d \in F$:
+
+1. $u + v \in V$ (Closure under addition)
+2. $cv \in V$ (Closure under scalar multiplication )
+3. $u + v = v + u$ (Commutativity of Addition)
+4. $(u + v) + w = u + (v + w)$ (Associativity of Addition)
+5. There exists a vector $0 \in V$ such that $u + 0 = u$ (Identity Element of Addition)
+6. For any vector $u \in V$, there exists a vector $-u \in V$ such that $u + (-u) = 0$ (Inverse Elements of Addition)
+7. $c(du) = (cd)u$ (Compatibility of Scalar Multiplication with Field Multiplication)
+8. $1u = u$, (1 is the multiplicative identity in $F$)
+9. $c(u + v) = cu + cv$ (Distributivity of Scalar Multiplication with respect to Vector Addition)
+10. $(c + d)u = cu + du$ (Distributivity of Scalar Multiplication with respect to Field Addition)
+ 
+# Example: 
+The n-dimensional space $R^n$ is a vector space.
+
+1.\textbf{1. Closure under addition:} For any $\mathbf{u}, \mathbf{v} \in V$, $\mathbf{u} + \mathbf{v} \in R^n$. This is true because in an n-dimensional space, adding two vectors results in another vector within the same space.
+
+2.\textbf{2. Closure under scalar multiplication:} For any $\mathbf{u} \in V$ and scalar $c$, $c\mathbf{u} \in R^n$. This holds true as multiplying a vector by a scalar does not change the dimensionality of the vector space.
+
+3.\textbf{3. Commutativity of addition:} For any $\mathbf{u}, \mathbf{v} \in V$, $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$. This property follows from the commutative property of addition in the underlying field.
+
+4.\textbf{4. Associativity of addition:} For any $\mathbf{u}, \mathbf{v}, \mathbf{w} \in R^n$, $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$. This property follows from the associativity of addition in the underlying field.
+
+5.\textbf{5. Existence of zero vector:} There exists a vector $\mathbf{0} \in R^n$ such that for any $\mathbf{u} \in V$, $\mathbf{u} + \mathbf{0} = \mathbf{u}$. This vector $\mathbf{0}$ is the additive identity element in the underlying field.
+
+6.\textbf{6. Existence of additive inverse:} For any $\mathbf{u} \in V$, there exists a vector $-\mathbf{u} \in V$ such that $\mathbf{u} + (-\mathbf{u}) = \mathbf{0}$. This property ensures that every vector has an additive inverse.
+
+7.\textbf{7. Distributivity of scalar multiplication over vector addition:} For any scalars $a$ and $b$ and $\mathbf{u} \in V$, $(a + b)\mathbf{u} = a\mathbf{u} + b\mathbf{u}$. This property follows from the distributivity of scalar multiplication over addition in the underlying field.
+
+8.\textbf{8. Distributivity of scalar multiplication over field addition:} For any scalar $a$ and vectors $\mathbf{u}, \mathbf{v} \in V$, $a(\mathbf{u} + \mathbf{v}) = a\mathbf{u} + a\mathbf{v}$. This property follows from the distributivity of scalar multiplication over addition in the underlying field.
+
+9.\textbf{9. Compatibility of scalar multiplication with field multiplication:} For any scalars $a$ and $b$ and $\mathbf{u} \in V$, $(ab)\mathbf{u} = a(b\mathbf{u})$. This property follows from the associativity of multiplication in the underlying field.
+
+10.\textbf{10. }   1$\mathbf{u} = u\in R^n$
+
+Since all the vector space axioms hold for the n-dimensional space $R^n$, it is indeed a vector space.
+
+
+<!-- # Other Examples of Vector Spaces -->
+
+<!-- Euclidean Space: The set of all n-dimensional real vectors, denoted as R^n, is a vector space over the field of real numbers (F = R). Here, vector addition and scalar multiplication are defined component-wise. -->
+
+<!-- Polynomial Space: The set of all polynomials of degree at most n, denoted as P^n, is a vector space over the field of real numbers (F = R). Vector addition is performed by adding coefficients of corresponding terms, and scalar multiplication is applied to all coefficients. -->
+
+<!-- Matrix Space: The set of all m x n matrices with entries from a field F, denoted as M(m x n, F), forms a vector space over F. Vector addition is performed by adding corresponding entries, and scalar multiplication affects all entries. -->
+
+<!-- Subspaces -->
+<!-- A subspace is a subset of a vector space that itself satisfies the vector space properties. In other words, a subspace is a vector space contained within a larger vector space. -->
+
+<!-- Definition: Let V be a vector space. A non-empty subset W of V is called a subspace of V if W is itself a vector space over the same field F with respect to the operations of vector addition and scalar multiplication defined in V. -->
+
+<!-- To determine whether a subset is a subspace, we need to check three conditions: -->
+
+<!-- The zero vector (0) of V is in W. -->
+<!-- W is closed under vector addition, i.e., for any vectors u and v in W, their sum u + v is in W. -->
+<!-- W is closed under scalar multiplication, i.e., for any vector u in W and any scalar c, the scalar multiple cu is in W. -->
+<!-- Examples of Subspaces -->
+<!-- Line in R^2: Consider a line passing through the origin in the Euclidean space R^2. This line is a subspace of R^2 because it contains the zero vector, is closed under vector addition (points on the line remain on the line when added), and is closed under scalar multiplication. -->
+
+<!-- Null Space: Given a matrix A, the null space of A, denoted as null(A), is the set of all vectors x such that Ax = 0 (where 0 is the zero vector). The null space is a subspace of the vector space of all vectors that can be multiplied by A. -->
+
+<!-- Column Space: The column space of a matrix A, denoted as col(A), is the set of all linear combinations of the columns of A. The column space is a subspace of the vector space of all vectors that can be formed by multiplying A by a vector. -->
+
+<!-- Conclusion -->
+<!-- Vector spaces and subspaces provide a mathematical framework for studying the properties of vectors and their interactions. Understanding these concepts is essential for a deeper comprehension of linear algebra and its applications. In this lecture, we defined vector spaces and subspaces, explored their properties, and provided examples to illustrate their significance. -->
