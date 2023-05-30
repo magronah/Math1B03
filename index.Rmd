@@ -7,6 +7,7 @@ output:
   pdf_document: default
 ---
 [information on vector spaces](vectorspace.html)
+
 # Topic:  Adjoint of Matrices
 
 ## Introduction
