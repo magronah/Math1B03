@@ -11,7 +11,7 @@
 
 
 
-<title>vectorspace.knit</title>
+<title>Inverse.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -352,129 +352,89 @@ display: none;
 </div>
 
 
-<div id="vector-spaces-and-subspaces" class="section level1">
-<h1>Vector Spaces and Subspaces</h1>
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<p>Today’s lecture is about vector spaces and subspaces. Vector spaces
-play a very important foundation for understanding many essential
-concepts in linear algebra such as linear transformations, eigenvectors.
-The essential ideas, properties, and examples of vector spaces and
-subspaces will be discussed in this lecture.</p>
-</div>
-<div id="vector-spaces" class="section level2">
-<h2>Vector Spaces</h2>
-<p>A vector space <span class="math inline">\(V\)</span> is a collection
-of vectors that satisfy specific criteria.</p>
-</div>
+<div id="inverse-of-matrices" class="section level1">
+<h1>Inverse of Matrices</h1>
+<p>The inverse of a matrix is an important concept in linear algebra. In
+this lecture, we will discuss what it means for a matrix to be
+invertible and how to find the inverse of a matrix. We will also explore
+some of the properties of invertible matrices and how they can be used
+to solve systems of linear equations.</p>
 <div id="definition" class="section level2">
-<h2>Definition:</h2>
-<p>A vector space <span class="math inline">\(V\)</span> over a field
-<span class="math inline">\(F\)</span> is a set of vectors (note:
-non-empty set of vectors) with two operations namely</p>
+<h2>Definition</h2>
+<p>An <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is said to be if there exists an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(B\)</span> such that <span class="math inline">\(AB = BA = I_n\)</span>, where <span class="math inline">\(I_n\)</span> is the <span class="math inline">\(n
+\times n\)</span> identity matrix. In this case, <span class="math inline">\(B\)</span> is called the of <span class="math inline">\(A\)</span>, denoted by <span class="math inline">\(A^{-1}\)</span>.</p>
+</div>
+<div id="theorem" class="section level2">
+<h2>Theorem</h2>
+<p>Let <span class="math inline">\(A\)</span> be an invertible <span class="math inline">\(n \times n\)</span> matrix. Then the inverse of
+<span class="math inline">\(A\)</span> is unique.</p>
+<p><strong>Proof:</strong> Suppose that <span class="math inline">\(A\)</span> is invertible. Then <span class="math inline">\(AB = BA = I_n\)</span> for some matrix <span class="math inline">\(B\)</span>. Since <span class="math inline">\(AB =
+I_n\)</span>, it follows that <span class="math inline">\(\text{rank}(A)
+= n\)</span>. Conversely, suppose that <span class="math inline">\(\text{rank}(A) = n\)</span>. Then <span class="math inline">\(A\)</span> can be row reduced to the identity
+matrix <span class="math inline">\(I_n\)</span>, which implies that
+there exist elementary matrices <span class="math inline">\(E_1, E_2,
+\ldots, E_k\)</span> such that <span class="math inline">\(E_k \cdots
+E_2 E_1 A = I_n\)</span>. Hence, <span class="math inline">\(A\)</span>
+is invertible, with <span class="math inline">\(A^{-1} = E_k \cdots E_2
+E_1\)</span>.</p>
+</div>
+<div id="method" class="section level2">
+<h2>Method</h2>
+<p>To find the inverse of a matrix <span class="math inline">\(A\)</span>, we can use the following method:</p>
 <ol style="list-style-type: decimal">
-<li>Vector Addition: For any two vectors <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> <span class="math inline">\(\in
-V\)</span>, there exists a unique vector <span class="math inline">\(u +
-v\)</span>, also in <span class="math inline">\(V\)</span>.</li>
-<li>Scalar Multiplication: For any vector <span class="math inline">\(u
-\in V\)</span> and any scalar <span class="math inline">\(c in
-F\)</span>, there exists a unique vector <span class="math inline">\(cu\)</span>, also in <span class="math inline">\(V\)</span>.</li>
+<li>Write the augmented matrix <span class="math inline">\((A|I_n)\)</span>, where <span class="math inline">\(I_n\)</span> is the <span class="math inline">\(n
+\times n\)</span> identity matrix.</li>
+<li>Use row operations to transform <span class="math inline">\((A|I_n)\)</span> into the form <span class="math inline">\((I_n|B)\)</span>, where <span class="math inline">\(B\)</span> is the inverse of <span class="math inline">\(A\)</span>.</li>
+<li>If <span class="math inline">\((A|I_n)\)</span> cannot be
+transformed into <span class="math inline">\((I_n|B)\)</span>, then
+<span class="math inline">\(A\)</span> is not invertible.</li>
 </ol>
-<p>These 2 operations mentioned above must satisfy the following 10
-properties. Lets list the properties.</p>
-<p>For all vectors <span class="math inline">\(u, v\)</span>, and <span class="math inline">\(w \in V\)</span> and scalars <span class="math inline">\(c\)</span> and <span class="math inline">\(d \in
-F\)</span>:</p>
-<ol style="list-style-type: decimal">
-<li><span class="math inline">\(u + v \in V\)</span> (Closure under
-addition)</li>
-<li><span class="math inline">\(cv \in V\)</span> (Closure under scalar
-multiplication )</li>
-<li><span class="math inline">\(u + v = v + u\)</span> (Commutativity of
-Addition)</li>
-<li><span class="math inline">\((u + v) + w = u + (v + w)\)</span>
-(Associativity of Addition)</li>
-<li>There exists a vector <span class="math inline">\(0 \in V\)</span>
-such that <span class="math inline">\(u + 0 = u\)</span> (Identity
-Element of Addition)</li>
-<li>For any vector <span class="math inline">\(u \in V\)</span>, there
-exists a vector <span class="math inline">\(-u \in V\)</span> such that
-<span class="math inline">\(u + (-u) = 0\)</span> (Inverse Elements of
-Addition)</li>
-<li><span class="math inline">\(c(du) = (cd)u\)</span> (Compatibility of
-Scalar Multiplication with Field Multiplication)</li>
-<li><span class="math inline">\(1u = u\)</span>, (1 is the
-multiplicative identity in <span class="math inline">\(F\)</span>)</li>
-<li><span class="math inline">\(c(u + v) = cu + cv\)</span>
-(Distributivity of Scalar Multiplication with respect to Vector
-Addition)</li>
-<li><span class="math inline">\((c + d)u = cu + du\)</span>
-(Distributivity of Scalar Multiplication with respect to Field
-Addition)</li>
-</ol>
+<div id="example" class="section level3">
+<h3>Example</h3>
+<p>Let <span class="math inline">\(A = \begin{pmatrix} 1 &amp; 2 \\ 3
+&amp; 4 \\ \end{pmatrix}\)</span>. To find the inverse of <span class="math inline">\(A\)</span>, we write the augmented matrix <span class="math inline">\((A|I_2)\)</span> and perform row operations:</p>
+<p><span class="math display">\[ \begin{pmatrix} 1 &amp; 2 &amp; 1&amp;
+0 \\ 3 &amp; 4 &amp; 0 &amp; 1\\ \end{pmatrix} \rightarrow
+\begin{pmatrix} 1 &amp; 2 &amp; 1&amp; 0 \\ 0 &amp; -2 &amp; -3 &amp;
+1\\ \end{pmatrix} \rightarrow \begin{pmatrix} 1 &amp; 0 &amp; -2 &amp; 1
+\\ 0 &amp; 1 &amp; 3/2 &amp; -1/2\\ \end{pmatrix} \]</span></p>
+<p>Hence, the inverse of <span class="math inline">\(A\)</span> is <span class="math inline">\(B = \begin{pmatrix} -2 &amp; 1 \\ 3/2 &amp; -1/2
+\\ \end{pmatrix}\)</span>. You can verify that <span class="math inline">\(A\times B = B\times A = I\)</span>.</p>
 </div>
 </div>
-<div id="example" class="section level1">
-<h1>Example:</h1>
-<p>The n-dimensional space <span class="math inline">\(R^n\)</span> is a
-vector space.</p>
-<p>1. For any <span class="math inline">\(\mathbf{u}, \mathbf{v} \in
-V\)</span>, <span class="math inline">\(\mathbf{u} + \mathbf{v} \in
-R^n\)</span>. This is true because in an n-dimensional space, adding two
-vectors results in another vector within the same space.</p>
-<p>2. For any <span class="math inline">\(\mathbf{u} \in V\)</span> and
-scalar <span class="math inline">\(c\)</span>, <span class="math inline">\(c\mathbf{u} \in R^n\)</span>. This holds true as
-multiplying a vector by a scalar does not change the dimensionality of
-the vector space.</p>
-<p>3. For any <span class="math inline">\(\mathbf{u}, \mathbf{v} \in
-V\)</span>, <span class="math inline">\(\mathbf{u} + \mathbf{v} =
-\mathbf{v} + \mathbf{u}\)</span>. This property follows from the
-commutative property of addition in the underlying field.</p>
-<p>4. For any <span class="math inline">\(\mathbf{u}, \mathbf{v},
-\mathbf{w} \in R^n\)</span>, <span class="math inline">\((\mathbf{u} +
-\mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} +
-\mathbf{w})\)</span>. This property follows from the associativity of
-addition in the underlying field.</p>
-<p>5. There exists a vector <span class="math inline">\(\mathbf{0} \in
-R^n\)</span> such that for any <span class="math inline">\(\mathbf{u}
-\in V\)</span>, <span class="math inline">\(\mathbf{u} + \mathbf{0} =
-\mathbf{u}\)</span>. This vector <span class="math inline">\(\mathbf{0}\)</span> is the additive identity
-element in the underlying field.</p>
-<p>6. For any <span class="math inline">\(\mathbf{u} \in V\)</span>,
-there exists a vector <span class="math inline">\(-\mathbf{u} \in
-V\)</span> such that <span class="math inline">\(\mathbf{u} +
-(-\mathbf{u}) = \mathbf{0}\)</span>. This property ensures that every
-vector has an additive inverse.</p>
-<p>7. For any scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> and <span class="math inline">\(\mathbf{u} \in V\)</span>, <span class="math inline">\((a + b)\mathbf{u} = a\mathbf{u} +
-b\mathbf{u}\)</span>. This property follows from the distributivity of
-scalar multiplication over addition in the underlying field.</p>
-<p>8. For any scalar <span class="math inline">\(a\)</span> and vectors
-<span class="math inline">\(\mathbf{u}, \mathbf{v} \in V\)</span>, <span class="math inline">\(a(\mathbf{u} + \mathbf{v}) = a\mathbf{u} +
-a\mathbf{v}\)</span>. This property follows from the distributivity of
-scalar multiplication over addition in the underlying field.</p>
-<p>9. For any scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> and <span class="math inline">\(\mathbf{u} \in V\)</span>, <span class="math inline">\((ab)\mathbf{u} = a(b\mathbf{u})\)</span>. This
-property follows from the associativity of multiplication in the
-underlying field.</p>
-<p>10. 1<span class="math inline">\(\mathbf{u} = u\in R^n\)</span></p>
-<p>Since all the vector space axioms hold for the n-dimensional space
-<span class="math inline">\(R^n\)</span>, it is indeed a vector
-space.</p>
-<!-- # Other Examples of Vector Spaces -->
-<!-- Euclidean Space: The set of all n-dimensional real vectors, denoted as R^n, is a vector space over the field of real numbers (F = R). Here, vector addition and scalar multiplication are defined component-wise. -->
-<!-- Polynomial Space: The set of all polynomials of degree at most n, denoted as P^n, is a vector space over the field of real numbers (F = R). Vector addition is performed by adding coefficients of corresponding terms, and scalar multiplication is applied to all coefficients. -->
-<!-- Matrix Space: The set of all m x n matrices with entries from a field F, denoted as M(m x n, F), forms a vector space over F. Vector addition is performed by adding corresponding entries, and scalar multiplication affects all entries. -->
-<!-- Subspaces -->
-<!-- A subspace is a subset of a vector space that itself satisfies the vector space properties. In other words, a subspace is a vector space contained within a larger vector space. -->
-<!-- Definition: Let V be a vector space. A non-empty subset W of V is called a subspace of V if W is itself a vector space over the same field F with respect to the operations of vector addition and scalar multiplication defined in V. -->
-<!-- To determine whether a subset is a subspace, we need to check three conditions: -->
-<!-- The zero vector (0) of V is in W. -->
-<!-- W is closed under vector addition, i.e., for any vectors u and v in W, their sum u + v is in W. -->
-<!-- W is closed under scalar multiplication, i.e., for any vector u in W and any scalar c, the scalar multiple cu is in W. -->
-<!-- Examples of Subspaces -->
-<!-- Line in R^2: Consider a line passing through the origin in the Euclidean space R^2. This line is a subspace of R^2 because it contains the zero vector, is closed under vector addition (points on the line remain on the line when added), and is closed under scalar multiplication. -->
-<!-- Null Space: Given a matrix A, the null space of A, denoted as null(A), is the set of all vectors x such that Ax = 0 (where 0 is the zero vector). The null space is a subspace of the vector space of all vectors that can be multiplied by A. -->
-<!-- Column Space: The column space of a matrix A, denoted as col(A), is the set of all linear combinations of the columns of A. The column space is a subspace of the vector space of all vectors that can be formed by multiplying A by a vector. -->
-<!-- Conclusion -->
-<!-- Vector spaces and subspaces provide a mathematical framework for studying the properties of vectors and their interactions. Understanding these concepts is essential for a deeper comprehension of linear algebra and its applications. In this lecture, we defined vector spaces and subspaces, explored their properties, and provided examples to illustrate their significance. -->
+<div id="properties-of-invertible-matrices" class="section level2">
+<h2>Properties of Invertible Matrices</h2>
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be invertible <span class="math inline">\(n \times n\)</span> matrices. Then:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\((A^{-1})^{-1} = A\)</span></li>
+<li><span class="math inline">\((AB)^{-1} = B^{-1}A^{-1}\)</span></li>
+<li><span class="math inline">\((A^T)^{-1} = (A^{-1})^T\)</span></li>
+</ol>
+</div>
+<div id="important-theorems" class="section level2">
+<h2>Important Theorems</h2>
+<p>Let A be a square <span class="math inline">\(n\times n\)</span>
+matrix. The following statements are equivalent (meaning if one
+statement is true then all other statement must be true and if one is
+false, all others are also false)</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(A\)</span> has an inverse</li>
+<li>A is row equivalent to the <span class="math inline">\(n\times
+n\)</span> identity matrix.</li>
+<li>A has n pivot positions.</li>
+<li><span class="math inline">\(Ax=0\)</span> has only the trivial
+solution.</li>
+<li>The columns of A are linearly independent.</li>
+<li>The linear transformation <span class="math inline">\(T(x)=Ax\)</span> is one-to-one.</li>
+<li><span class="math inline">\(Ax= b\)</span> has at least one solution
+for each <span class="math inline">\(b \in R^n\)</span>.</li>
+<li>The columns of <span class="math inline">\(A\)</span> span <span class="math inline">\(R^n\)</span></li>
+<li>The linear transformation <span class="math inline">\(T(x)=Ax\)</span> maps <span class="math inline">\(R^n\)</span> onto <span class="math inline">\(R^n\)</span>.</li>
+<li>There exist an <span class="math inline">\(n\times n\)</span>
+inverse matrix <span class="math inline">\(C\)</span> such that <span class="math inline">\(CA= I\)</span> and <span class="math inline">\(AC=
+I\)</span> .</li>
+</ol>
+</div>
 </div>
 
 

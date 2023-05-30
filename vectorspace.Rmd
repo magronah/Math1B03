@@ -1,17 +1,10 @@
----
-title: "Vector Spaces and Subspaces"
-author: "Michael Agronah"
-date: "2023-05-30"
-output:
-  html_document: default
-  pdf_document: default
----
+# Vector Spaces and Subspaces
 
-# Introduction
+## Introduction
 
 Today's lecture is about vector spaces and subspaces. Vector spaces play a very important foundation for understanding many essential concepts in linear algebra such as linear transformations, eigenvectors.  The essential ideas, properties, and examples of vector spaces and subspaces will be discussed in this lecture.
 
-# Vector Spaces
+## Vector Spaces
 A vector space $V$ is a collection of vectors that satisfy specific criteria. 
 
 ## Definition: 
