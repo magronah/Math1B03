@@ -214,7 +214,6 @@ The adjoint of a matrix has several properties:
 A matrix's adjoint contains useful information about the original matrix, such as its invertibility and the relationship between the matrix and its determinant. We focused on the definition and properties of the adjoint of 2x2 and 3x3 matrices in this lesson. However, the adjoint idea can be used to matrices of any order. Further study of this subject will broaden your grasp of linear algebra and its applications.
 
 
-<!-- [introduction](main/introduction.htlm) -->
 # Topic:  Vector Spaces and Subspaces
 
 ## Introduction
