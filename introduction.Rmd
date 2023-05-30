@@ -1,0 +1,431 @@
+---
+title: "Math 1B03– Linear Algebra I-McMaster University (Course Notes)"
+author: "Michael Agronah"
+date: "2023-05-08"
+output:
+  html_document: default
+  pdf_document: default
+---
+ 
+### Introduction 
+
+This course is and introduction to vector spaces given by solutions to linear systems. Linear independence, dimension. Determinants. Eigenvalues, eigenvectors and diagonalization. Complex numbers. 
+
+
+### Textbook
+The recommended textbook is Linear Algebra and its Applications (6th Edition) by D. Lay, S. Lay, and J. McDonald. 
+ 
+### Lecture 1
+
+#### Systems of linear equations
+
+A system of linear equations is a set of two or more linear equations with the same variables. The goal is to find the values of the variables that satisfy all the equations in the system simultaneously. A system of linear equations can be written in matrix form as follows:
+
+\begin{align*}
+a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n &= b_1 \\
+a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n &= b_2 \\
+&\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n &= b_m \\
+\end{align*}
+
+where $a_{ij}$ and $b_i$ are constants and $x_1, x_2, \dots, x_n$ are the variables. The system has $m$ equations and $n$ variables.
+
+Example:
+
+Consider the following system of linear equations:
+
+\begin{align*}
+2x - y &= 3 \\
+3x + 2y &= 1 \\
+\end{align*}
+
+This system has two equations and two variables ($x$ and $y$). We can write the system in matrix form as:
+
+\begin{align*}
+2x - y &= 3 \\
+3x + 2y &= 1 \\
+\end{align*}
+
+
+#### Solutions to systems of linear equations
+
+A solution to a system of linear equations is a set of values for the variables that satisfies all the equations in the system simultaneously. A system of linear equations can have one, many, or no solutions. If a system has at least one solution, it is said to be consistent. If it has no solutions, it is said to be inconsistent.
+
+Example:
+
+Consider the system of linear equations from the previous example:
+
+\begin{align*}
+2x - y &= 3 \\
+3x + 2y &= 1 \\
+\end{align*}
+
+To find the solution(s) to this system, we can use various methods, such as elimination, substitution, or matrices. Using the elimination method, we can add 1.5 times the first equation to the second equation to eliminate $y$:
+
+\begin{align*}
+2x - y &= 3 \\
+\frac{9}{2} x + \frac{3}{2} y &= \frac{7}{2} 
+\end{align*}
+
+Then, we can multiply the first equation by 3 and add it to the second equation to eliminate $x$:
+
+\begin{align*}
+2x - y &= 3 \
+\frac{9}{2}x + \frac{3}{2}y &= \frac{7}{2} \\
+\hline \\
+\frac{15}{2}y &= -\frac{1}{2}
+\end{align*}
+
+Solving for $y$, we get $y=-1/15$. Substituting this value back into the first equation, we get $x=4/15$. Therefore, the solution to the system is $(x,y)=(4/15,-1/15)$.
+## Define and show examples each in  latex of using Gaussian elimination to show that a system of linear equation 
+
+1. inconsistent 
+2. consistent with unique solution 
+3. consistent with infinitely many solutions
+
+Gaussian elimination is a method used to solve systems of linear equations by performing elementary row operations on an augmented matrix until it is in row echelon form or reduced row echelon form. Here are examples of using Gaussian elimination to determine whether a system of linear equations is inconsistent, consistent with a unique solution, or consistent with infinitely many solutions:
+
+## Inconsistent System:
+Consider the system of linear equations:
+\begin{align*}
+x_1 + 2x_2 + 3x_3 &= 4 \\
+2x_1 + 4x_2 + 6x_3 &= 5 \\
+3x_1 + 6x_2 + 9x_3 &= 8 \\
+\end{align*}
+We can write the augmented matrix as:
+\begin{equation*}
+\left[\begin{array}{ccc|c}
+1 & 2 & 3 & 4 \\
+2 & 4 & 6 & 5 \\
+3 & 6 & 9 & 8
+\end{array}\right]
+\end{equation*}
+Using Gaussian elimination, we can transform the augmented matrix into row echelon form:
+\begin{equation*}
+\left[\begin{array}{ccc|c}
+1 & 2 & 3 & 4 \\
+0 & 0 & 0 & -3 \\
+0 & 0 & 0 & -4
+\end{array}\right]
+\end{equation*}
+Since the last row of the augmented matrix corresponds to the equation $0x_1 + 0x_2 + 0x_3 = -4$, which has no solution, the system of linear equations is inconsistent.
+
+### Consistent System with Unique Solution:
+Consider the system of linear equations:
+\begin{align*}
+2x_1 + 3x_2 &= 5 \\
+-4x_1 + 2x_2 &= 1 \\
+\end{align*}
+We can write the augmented matrix as:
+\begin{equation*}
+\left[\begin{array}{cc|c}
+2 & 3 & 5 \\
+-4 & 2 & 1\\
+\end{array}\right]
+\end{equation*}
+Using Gaussian elimination, we can transform the augmented matrix into reduced row echelon form:
+\begin{equation*}
+\left[\begin{array}{cc|c}
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+\end{array}\right]
+\end{equation*}
+This corresponds to the system of linear equations:
+\begin{align*}
+x_1 &= 1 \\
+x_2 &= 1 \\
+\end{align*}
+Therefore, the system of linear equations has a unique solution of $(1,1)$.
+
+### Consistent System with Infinitely Many Solutions:
+Consider the system of linear equations:
+\begin{align*}
+2x_1 + 3x_2 &= 5 \\
+4x_1 + 6x_2 &= 10 \\
+\end{align*}
+We can write the augmented matrix as:
+\begin{equation*}
+\left[\begin{array}{cc|c}
+2 & 3 & 5 \\
+4 & 6 & 10 \\
+\end{array}\right]
+\end{equation*}
+Using Gaussian elimination, we can transform the augmented matrix into reduced row echelon form:
+
+
+\begin{equation*}
+\left[\begin{array}{cc|c}
+1 & \frac{3}{2} & \frac{5}{2} \\
+0 & 0 & 0 \\
+\end{array}\right]
+
+
+
+Echelon Form: An echelon form is a matrix where the entries below the diagonal are all zero. A matrix is said to be in echelon form if the leading coefficient of each nonzero row is to the right of the leading coefficient of the row above it.
+Example:
+
+\begin{equation*}
+\left[\begin{array}{ccc|c}
+2 & 1 & -3 & 4 \\
+0 & 3 & 7 & -2 \\
+0 & 0 & 1 & 5 \\
+0 & 0 & 0 & 2 \\
+\end{array}\right]
+\end{equation*}
+
+### Row Echelon Form: 
+A row echelon form is a matrix that satisfies the following conditions:
+All rows containing only zeros are at the bottom of the matrix.
+In each nonzero row, the first nonzero entry is called the pivot or leading coefficient. The pivot of each row is to the right of the pivot of the row above it.
+Any rows containing only zeros above a pivot row may be omitted.
+Example:
+
+\begin{equation*}
+\left[\begin{array}{ccc|c}
+1 & 2 & -3 & 4 \\
+0 & 1 & 5 & -2 \\
+0 & 0 & 1 & 5 \\
+0 & 0 & 0 & 2 \\
+\end{array}\right]
+\end{equation*}
+
+Reduced Row Echelon Form: A reduced row echelon form is a matrix that satisfies the following conditions:
+It is in row echelon form.
+Each pivot is 1.
+Each column containing a pivot has zeros in all other entries.
+Example:
+
+\begin{equation*}
+\left[\begin{array}{ccc|c}
+1 & 0 & 0 & 2 \\
+0 & 1 & 0 & -3 \\
+0 & 0 & 1 & 4 \\
+0 & 0 & 0 & 0 \\
+\end{array}\right]
+\end{equation*}
+
+In this example, each pivot is 1 and each column containing a pivot has zeros in all other entries. Note that any matrix can be transformed into a reduced row echelon form using the Gaussian elimination method.
+
+Suppose we have the following system of equations:
+
+
+\begin{align*}
+2x - y + 3z &= 5 \\
+4x + 3y - 5z &= -1 \\
+-2x + 2y + z &= 3 \\
+\end{align*}
+
+We can represent this system as an augmented matrix:
+
+\begin{equation*}
+\left[\begin{array}{ccc|c}
+2 & -1 & 3 & 5 \\
+4 & 3 & -5 & -1 \\
+-2 & 2 & 1 & 3 \\
+\end{array}\right]
+\end{equation*}
+
+To solve this system using Gaussian elimination, we perform a series of row operations to transform the augmented matrix into row echelon form. The basic row operations are:
+
+1. Swap two rows
+
+2. Multiply a row by a nonzero scalar
+
+3. Add a multiple of one row to another row
+
+Our goal is to transform the augmented matrix into the form:
+
+\begin{equation*}
+\left[\begin{array}{ccc|c}
+1 & * & * & * \\
+0 & 1 & * & * \\
+0 & 0 & 1 & * \\
+\end{array}\right]
+\end{equation*}
+
+where the *'s represent arbitrary entries.
+
+We start by using the first row to eliminate the first column below the first row. To do this, we subtract 2 times the first row from the second row and add 1 times the first row to the third row:
+
+\begin{equation*}
+\left[\begin{array}{ccc|c}
+2 & -1 & 3 & 5 \\
+0 & 5 & -11 & -11 \\
+0 & 1 & 4 & 8 \\
+\end{array}\right]
+\end{equation*}
+
+Next, we use the second row to eliminate the second column below the second row. To do this, we add -1/5 times the second row to the third row:
+
+\begin{equation*}
+\left[\begin{array}{ccc|c}
+2 & -1 & 3 & 5 \\
+0 & 5 & -11 & -11 \\
+0 & 0 & 9/5 & 17/5 \\
+\end{array}\right]
+\end{equation*}
+
+Finally, we use the third row to eliminate the third column below the third row. To do this, we multiply the third row by 5/9:
+
+\begin{equation*}
+\left[\begin{array}{ccc|c}
+2 & -1 & 3 & 5 \\
+0 & 5 & -11 & -11 \\
+0 & 0 & 1 & 3 \\
+\end{array}\right]
+\end{equation*}
+
+At this point, the matrix is in row echelon form. To obtain the solution to the system of equations, we perform back substitution. Starting with the bottom row, we solve for z:
+
+\begin{align*}
+z &= 3 \\
+\end{align*}
+
+Moving up to the second row, we substitute in the value we just found for z and solve for y:
+
+\begin{align*}
+5y - 11(3) &= -11 \\
+5y &= 14 \\
+y &= \frac{14}{5} \\
+\end{align*}
+
+Finally, we substitute in the values we found for y and z into the first equation and solve for x:
+
+\begin{align*}
+2x - (\frac{14}{5}) + 3(3) \\
+\end{align*}
+
+##### spanning set 
+A spanning set of a vector space V is a set of vectors that can be used to generate every vector in V by taking linear combinations of them. In other words, a set S of vectors is a spanning set of V if every vector in V can be written as a linear combination of the vectors in S.
+
+Example:
+
+Let V be the three-dimensional vector space over the field of real numbers, and let S = { $\begin{bmatrix} 1 \\ 0  \\  0 \\ \end{bmatrix}$, $\begin{bmatrix} 0 \\ 1 \\ 0 \\ \end{bmatrix}$, $\begin{bmatrix} 0 \\ 0 \\ 1 \\ \end{bmatrix}$ } be the set of standard basis vectors in 3D. Then S is a spanning set of V, since every vector in V can be written as a linear combination of the vectors in S:
+
+\begin{equation*}
+\begin{bmatrix} a \ b \ c \end{bmatrix} = a \begin{bmatrix} 1 \ 0 \ 0 \end{bmatrix} + b \begin{bmatrix} 0 \ 1 \ 0 \end{bmatrix} + c \begin{bmatrix} 0 \ 0 \ 1 \end{bmatrix}
+\end{equation*}
+
+for any real numbers a, b, and c.
+
+
+
+
+Suppose we have the following system of linear equations:
+
+\begin{align*}
+2x + 4y &= b \
+4x + 8y &= 2b \
+6x + 12y &= 3b
+\end{align*}
+
+In matrix form, this system can be written as:
+
+\begin{pmatrix}
+2 & 4 \\
+4 & 8 \\
+6 & 12
+\end{pmatrix}
+
+
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix} =
+\begin{pmatrix}
+b \\
+2b \\
+3b
+\end{pmatrix}
+
+To find the solution of this system, we can row reduce the augmented matrix:
+\begin{pmatrix}
+2 & 4 & | & b \\
+4 & 8 & | & 2b \\
+6 & 12 & | & 3b
+\end{pmatrix}
+\rightarrow
+\begin{pmatrix}
+2 & 4 & | & b \\
+0 & 0 & | & 0 \\
+0 & 0 & | & 0 \\
+\end{pmatrix}
+
+
+From the row-reduced matrix, we see that the system has no unique solution. In fact, the solution exists only for $b = 0$. If $b \neq 0$, the system is inconsistent and has no solution.
+
+
+
+
+
+Consider the following matrix:
+
+What is the reduced row echelon form of this matrix?
+
+$$ a) \begin{bmatrix}
+1 & 0 & -1 \\
+0 & 1 & 2 \\
+0 & 0 & 0 \\
+\end{bmatrix}, b) \begin{bmatrix}
+1 & 2 & 3 \\
+0 & 1 & 2 \\
+0 & 0 & 0 \\
+\end{bmatrix},
+c) \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix}, 
+d) \begin{bmatrix}
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+\end{bmatrix}$$
+
+
+Answer: a)
+
+Consider the following system of linear equations:
+\begin{align*}
+x_1 + 2x_2 + 3x_3 &= 4 \\
+2x_1 + 4x_2 + 6x_3 &= 8 \\
+3x_1 + 6x_2 + 9x_3 &= 12\\
+\end{align*}
+
+What is the solution of this system of equations after applying Gaussian elimination?
+
+a) $x_1 = 0, x_2 = 0, x_3 = 0$
+b) $x_1 = 1, x_2 = 1, x_3 = 1$
+c) $x_1 = 4, x_2 = 0, x_3 = 0$
+d) $x_1 = 1, x_2 = 2, x_3 = 3$
+ 
+\begin{equation*}
+\left[\begin{array}{ccc|c}
+1 & 2 & 3 & 4 \\
+2 & 4 & 6 & 5 \\
+3 & 6 & 9 & 8\\
+\end{array}\right]
+\end{equation*}
+ 
+
+#### When does the system $Ax = b$ have a solution of all $b$? 
+
+Do $Ax = b$ have a solution of all $b$ is 
+
+$$A = \begin{equation*}
+\left[\begin{array}{ccc}
+1 & 2 & 3  \\
+2 & 8 & 14\\
+1 & 3 & 5 \\
+\end{array}\right]
+\end{equation*} $$
+
+
+Recall span 
+
+
+Thm: Let A be 
+1. For each $b \in R^n Ax = b$ has a solution 
+2. Each b  
+ 
+ 
