@@ -1,0 +1,55 @@
+# Lecture 1 {#cross}
+
+## Systems of linear equations
+
+A system of linear equations is a set of two or more linear equations with the same variables. The goal is to find the values of the variables that satisfy all the equations in the system simultaneously. A system of linear equations can be written in matrix form as follows:
+
+\begin{align*}
+a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n &= b_1 \\
+a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n &= b_2 \\
+&\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n &= b_m \\
+\end{align*}
+
+where $a_{ij}$ and $b_i$ are constants and $x_1, x_2, \dots, x_n$ are the variables. The system has $m$ equations and $n$ variables.
+
+Example:
+
+Consider the following system of linear equations:
+
+\begin{align*}
+2x - y &= 3 \\
+3x + 2y &= 1 \\
+\end{align*}
+
+This system has two equations and two variables ($x$ and $y$). We can write the system in matrix form as:
+
+\begin{align*}
+2x - y &= 3 \\
+3x + 2y &= 1 \\
+\end{align*}
+
+
+
+
+
+ 
+## Captioned figures and tables
+
+Figures and tables *with captions* can also be cross-referenced from elsewhere in your book using `\@ref(fig:chunk-label)` and `\@ref(tab:chunk-label)`, respectively.
+
+See Figure \@ref(fig:nice-fig).
+
+```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center', fig.alt='Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases.'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+Don't miss Table \@ref(tab:nice-tab).
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(pressure, 10), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
